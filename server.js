@@ -35,8 +35,9 @@ function createtemplate(data){
       </body>
       
   </html>
-`, 
-};
+`;
+return htmltemplate;
+}
 
 
 
