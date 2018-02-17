@@ -19,4 +19,9 @@ body {
 .img-medium {
     height: 200px;
 }
+h1 { font-weight:700;}
+p {
+    color:red;
+   font-weight:200;
+   }
 
