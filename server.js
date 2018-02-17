@@ -5,15 +5,51 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var article1 = {
+    title: 'article one',
+    heading: 'first-article',
+    content: 'this is the first article i am going to write on my first web app',
+} ;  
+var article2 = {
+    title: 'article second',
+    heading: 'second-article',
+    content: 'this is the second article i am going to write on my first web app',
+}  ;  
+
+function createtemplate(data){
+   var title = data.title;
+   var heading = data.heading;
+   var content = data.content;
+    var htmltemplate = `<!DOCTYPE html>
+  <html>
+      <head>
+          <title>
+              ${title}
+          </title>
+          <link href="/ui/style.css" rel="stylesheet" />
+         
+        </head>
+      <body>
+          <h1>${heading}</h1>
+          <p>${content}</p>
+      </body>
+      
+  </html>
+`, 
+};
+
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article1',function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+  res.send(createtemplate(article1));
 });
 app.get('/article2',function (req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-second.html'));  
+    res.send(createtemplate(article2));  
 });
 app.get('/article3',function(req, res) {
      res.sendFile(path.join(__dirname, 'ui', 'article-third.html'));
