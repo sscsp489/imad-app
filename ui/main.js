@@ -1,4 +1,4 @@
-var button = document.getElementById('counter');
+var button = document.getElementByClass('counterr');
 
 
 button.onclick = function () {
@@ -7,7 +7,7 @@ button.onclick = function () {
         if(request.readyState === XMLHttprequest.DONE){
             if(request.status === 200 ) {
                 var counter = request.responseText;
-                var span = document.getElementById('countt');
+                var span = document.getElementByClass('countt');
                 span.innerHTML = counter.toString();
                 
             }
