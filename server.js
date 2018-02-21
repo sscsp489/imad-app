@@ -5,16 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var article1 = {
-    title: 'article one',
-    heading: 'first-article',
-    content: 'this is the first article i am going to write on my first web app',
-} ;  
-var article2 = {
-    title: 'article second',
-    heading: 'second-article',
-    content: 'this is the second article i am going to write on my first web app',
-}  ;  
+
 
 function createtemplate(data){
    var title = data.title;
