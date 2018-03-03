@@ -13,6 +13,35 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
+var articles = {
+    'article-one' : {
+        title : 'article 1',
+        heading : 'first article',
+        date : 'feb 1,2018',
+        content : 'this my first article'
+        
+        
+    },
+    'article-second' : {
+        title : 'article 2',
+        heading : 'second article',
+        date : 'feb 3,2018',
+        content : 'this my second article'
+        
+        
+    },
+     'article-third' : {
+        title : 'article 3',
+        heading : 'third article',
+        date : 'feb 10,2018',
+        content : 'this my third article'
+        
+        
+    }
+    
+    
+};
+
 
 
 
@@ -61,14 +90,10 @@ app.get('/test-db' , function (req,res) {
         }
     });
 });
-app.get('/article1',function (req, res) {
-  res.send(createtemplate(article1));
-});
-app.get('/article2',function (req, res) {
-    res.send(createtemplate(article2));  
-});
-app.get('/article3',function(req, res) {
-     res.sendFile(path.join(__dirname, 'ui', 'article-third.html'));
+appp.get('/:aticlename',function(req,res){
+    var articleName = req.params.articleName;
+    res.send(createtemplates(articles[articleName]));
+    
 });
 
 
