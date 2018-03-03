@@ -60,6 +60,7 @@ function createtemplate(data){
         </head>
       <body>
           <h1>${heading}</h1>
+          <div>${date.toDateString()}
           <p>${content}</p>
       </body>
       
