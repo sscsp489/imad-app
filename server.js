@@ -90,9 +90,24 @@ app.get('/test-db' , function (req,res) {
         }
     });
 });
-appp.get('/:aticlename',function(req,res){
-    var articleName = req.params.articleName;
-    res.send(createtemplates(articles[articleName]));
+appp.get('/articles/:articleName',function(err,result){
+    
+    
+    pool.query("SELECT * FROM article WHERE title = "+req.params.articleName,function(req,res ){
+        if (err){
+            res.status(500).send(err,toString());
+        } else {
+            if (result.row.length === 0)
+            { res.status(404).send('article not found');
+            }
+            else{
+                var articleData = result.rows[0];
+                res.send(createtemplate(articleData));
+                
+            }
+        }
+    } );
+    
     
 });
 
